@@ -23,7 +23,7 @@ int main() {
     printf("[MegaMobox] Installing dependencies...\n");
     run_cmd("pkg update -y");
     run_cmd("pkg install x11-repo -y");
-    run_cmd("pkg install termux-x11-nightly pulseaudio clang -y");
+    run_cmd("pkg install termux-x11-nightly pulseaudio clang xorg-xeyes -y");
 
     printf("[MegaMobox] Launching Termux-X11 server...\n");
     run_cmd("termux-x11 :0 &");
@@ -35,6 +35,9 @@ int main() {
     printf("[MegaMobox] Preparing Wine environment...\n");
     setenv("DISPLAY", ":0", 1);
     setenv("PULSE_SERVER", "127.0.0.1", 1);
+
+    printf("[MegaMobox] Launching test process (xeyes)...\n");
+    run_cmd("xeyes &");
 
     printf("[MegaMobox] Handing over control...\n");
 
